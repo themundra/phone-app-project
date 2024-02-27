@@ -13,11 +13,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  int currentIndex = 0;
   final List<Widget> _screens = const [
     HomeScreen(),
     CourseScreen(),
-    ScheduleScreen(),
+    TasksScreen(),
     ProfileScreen(),
   ];
 
@@ -28,10 +28,10 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         unselectedItemColor: const Color(0xff6F7975),
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            currentIndex = index;
           });
         },
         selectedItemColor: const Color(0xFF136B55),
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       body: IndexedStack(
-        index: _currentIndex,
+        index: currentIndex,
         children: _screens,
       ),
     );

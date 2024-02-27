@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:phone_app_design/screen/profile_screen.dart';
 import 'package:phone_app_design/screen/qna_page.dart';
-import 'package:phone_app_design/screen/tasks_screen.dart';
+import 'package:phone_app_design/screen/schedule_screen.dart';
 import 'package:phone_app_design/widgets/home_cards.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,13 +52,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       width: 100,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 50,
                       width: 50,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundImage:
-                            AssetImage("assets/images/profile.jpg"),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileScreen(),
+                            ),
+                          );
+                        },
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage:
+                              AssetImage("assets/images/profile.jpg"),
+                        ),
                       ),
                     ),
                   ],
@@ -114,9 +124,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       cardText: "Tasks",
                       onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const TasksScreen())),
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TasksScreen(),
+                        ),
+                      ),
                     ),
                     HomeCards(
                         buttonIcon: Icon(

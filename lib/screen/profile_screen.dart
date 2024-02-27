@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_app_design/screen/edit_profile.dart';
+import 'package:phone_app_design/screen/login_screen.dart';
 import 'package:phone_app_design/widgets/profile_icons.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -18,15 +19,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           "Profile",
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 fontSize: 25,
+                fontWeight: FontWeight.w700,
                 color: Theme.of(context).colorScheme.primary,
               ),
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.keyboard_arrow_left_rounded),
-          color: Theme.of(context).colorScheme.secondary,
-        ),
       ),
       body: SingleChildScrollView(
           child: Container(
@@ -118,8 +116,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfileIcons(
                 profileIconMenuIcon: Icon(
                   Icons.favorite_rounded,
-                  color: Theme.of(context).colorScheme.error,
                   size: 30,
+                  color: Colors.red,
                 ),
                 profileIconMenuText: "Rate Us",
                 onTap: () {}),
@@ -134,7 +132,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               profileIconMenuText: "Send Feedback",
               onTap: () {},
-            )
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.onBackground,
+                foregroundColor: Colors.white,
+              ),
+              child: Text("Log Out"),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       )),
